@@ -25,7 +25,7 @@ func main() {
 	log.Println("Starting yet-another-golang-webserver app...")
 
 	mux := http.NewServeMux()
-	mux.Handle("/", handlers.HelloWorldHandler("", version))
+	mux.Handle("/", handlers.HelloWorldHandler(os.Getenv("MESSAGE"), version))
 	mux.HandleFunc("/status/am-i-up", handlers.HealthCheck)
 
 	httpServer := manners.NewServer()
